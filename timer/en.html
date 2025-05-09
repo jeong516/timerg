@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="TimerG(타이머G)" content="
+        Visual timer, Google-style timer, stop watch, manage your time.
+        Use it online web, dont' need to install it. The visual timer which is used to track
+        the time. This timer support the single timer and the sequence timer by setting the mode. It can be used in any mobile devices as well.">
+  <meta name="description" content="Use it online web, dont' need to install it. The visual timer which is used to track
+        the time. This timer support the single timer and the sequence timer by setting the mode.
+        It can be used in any mobile devices as well.">
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="TimerG(타이머G)">
+  <meta property="og:description" content="Google style visual timer">
+  <meta property="og:image" content="https://www.timerg.com/favicon.ico">
+  <meta property="og:url" content="https://www.timerg.com.com">
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta name="naver-site-verification" content="9ba7bac46fd539c92a546ec41ab14f9f7752aebc" />
+  <meta name="naver-site-verification" content="b85c0258aab61e2d87f4f88d348ed40a02b865c8" />
+  <title>TimerG(타이머G)</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+    <header style="width: 100%; margin-bottom: 20px;">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><h1>TimerG</h1></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Timer</a></li>
+                    <li><a href="../blog.html">Contents Hub</a></li>
+                    <li><a href="../about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<body>
+    <div class="app-top-buttons">
+        <button id="toggleSettingsButton">Hide settings</button>
+        <button id="fullscreenTimerBtn">Full screen</button>
+        <button id="lanBtn" onclick="location.href='index.html'">&#x1F1F0;&#x1F1F7; Korean</button>
+    </div>
+
+    <div class="top-controls" id="topControlsContainer">
+         <div class="control-group">
+            <div class="control-group-title">Settings</div>
+            <div class="control-item">
+                <label for="sizeSlider">Size:</label>
+                <input type="range" id="sizeSlider" min="50" max="100" value="100" step="10">
+                <span id="sizeValue" class="value-display">100%</span>
+            </div>
+            <div class="control-item">
+                <label for="volumeSlider" style="font-size: 22px;">🔈</label>
+                <input type="range" id="volumeSlider" min="0" max="100" value="50" step="10">
+                <span id="volumeValue" class="value-display">100%</span>
+            </div>
+            <div class="control-item">
+                <input type="checkbox" id="toggleTimeDisplay" checked>
+                <label for="toggleTimeDisplay">Display time</label>
+            </div>
+        </div>
+
+        <div class="col-mode-control-group">
+          <div class="control-group" id="mainColorPickerContainerControlGroup">
+              <div class="control-group-title">Timer Color</div>
+              <div class="control-item">
+                  <div class="custom-color-picker-container" id="mainColorPickerContainer"></div>
+              </div>
+          </div>
+          <div class="control-group">
+               <div class="control-group-title">Mode</div>
+              <div class="control-item app-mode-toggle">
+                  <input type="checkbox" id="globalSequenceModeCheckbox">
+                  <label for="globalSequenceModeCheckbox">Use sequence mode</label>
+              </div>
+          </div>
+       </div>
+    </div>
+
+    <div class="timer-container" id="mainTimerContainer">
+        <div class="clock" id="clock">
+            <svg class="progress-ring" id="progressSvg">
+                <circle class="progress-ring__background" id="backgroundCircle"/>
+                <path id="pieSlice" class="pie-slice" />
+            </svg>
+            <div class="time-display" id="timeDisplayContainer">
+                <span id="digital-time">00:00:00</span>
+            </div>
+        </div>
+        <div id="currentSequenceDisplay"></div> 
+        <div class="controls" id="mainTimerControls"> 
+            <div class="time-inputs" id="mainTimeInputs">
+                <input type="number" id="hours" placeholder="HH" min="0" max="99" value="0">
+                <span>:</span>
+                <input type="number" id="minutes" placeholder="MM" min="0" max="59" value="5">
+                <span>:</span>
+                <input type="number" id="seconds" placeholder="SS" min="0" max="59" value="0">
+            </div>
+            <div class="buttons">
+                <button id="startBtn">▶︎</button>
+                <button id="pauseBtn">❚❚</button>
+                <button id="resetBtn">⟳</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="sequenceEditor" style="display:none;"> <h2>Sequence Editor</h2>
+        <div id="sequenceItemsContainer"></div>
+        <div class="control-item" id="autoStartNextSequenceCheckbox_div">
+            <input type="checkbox" id="autoStartNextSequenceCheckbox" checked>
+            <label for="autoStartNextSequenceCheckbox" style="margin-right: 20px;">Automatically start next sequence</label>
+            <input type="checkbox" id="alramForEachTimerCheckbox">
+            <label for="alramForEachTimerCheckbox">Enable alram for each item</label>
+        </div>
+        <div class="sequence-buttons-group">
+            <button id="addSequenceItemBtn">Add sequence item</button>
+            </div>
+    </div>
+
+    
+    <audio id="alramAudio" style="display: none;">
+        <source src="alramAudio.mp3" type="audio/mpeg">
+    </audio>
+    <div id="alram" class="modal-containera" style="display: none;">
+      <div class="modal-content">
+        <span id="closeAlram">&times;</span>
+        <h2>⏰ Time is up! ⏰</h2>
+      </div>
+    </div>
+    <template id="sequenceItemTemplate">
+        <div class="sequence-item">
+            <div class="sequence-item-header">
+                <span class="sequence-item-number">Item</span>
+                <button class="removeSequenceItemBtn" title="Remove Item">X</button>
+            </div>
+            <div class="control-item">
+                <label>Name: <input type="text" class="sequence-name" placeholder="e.g.: warming up (optional)"></label>
+            </div>
+            <div class="control-item">
+                <label>Duration:</label>
+                <input type="number" class="seq-hours" placeholder="HH" min="0" max="99" value="0"><span>:</span>
+                <input type="number" class="seq-minutes" placeholder="MM" min="0" max="59" value="0"><span>:</span>
+                <input type="number" class="seq-seconds" placeholder="SS" min="0" max="59" value="5">
+            </div>
+            <div class="control-item">
+                <label class="seq-color-label">Color:</label>
+                <div class="custom-color-picker-container" data-is-sequence-item="true">
+                    </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="script_en.js"></script>
+</body>
+</html>
