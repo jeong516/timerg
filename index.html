@@ -1,22 +1,28 @@
- <!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="TimerG(타이머G)" content="
-        Google스타일 타이머, 스톱워치. 시간을 효율적으로 관리하세요. 다운로드 필요없는 웹 타이머. 구글스타일 타이머를 이용해서 시간관리를 쉽게 해보세요.
-        시퀀스모드를 이용해서 여러개의 작업시간을 순차적으로 관리해보세요.">
-  <meta name="description" content="다운로드 필요없는 웹 타이머. 구글스타일 타이머를 이용해서 시간관리를 쉽게 해보세요.
-        시퀀스모드를 이용해서 여러개의 작업시간을 순차적으로 관리해보세요.">
-  <meta name="naver-site-verification" content="9ba7bac46fd539c92a546ec41ab14f9f7752aebc" />
-  <meta name="naver-site-verification" content="b85c0258aab61e2d87f4f88d348ed40a02b865c8" />
-  <meta property="og:type" content="website">
+        Visual timer, Google-style timer, stop watch, manage your time.
+        Use it online web, dont' need to install it. The visual timer which is used to track
+        the time. This timer support the single timer and the sequence timer by setting the mode. It can be used in any mobile devices as well.">
+  <meta name="description" content="Use it online web, dont' need to install it. The visual timer which is used to track
+        the time. This timer support the single timer and the sequence timer by setting the mode.
+        It can be used in any mobile devices as well.">
+  <meta property="og:type" content="website"> 
   <meta property="og:title" content="TimerG(타이머G)">
   <meta property="og:description" content="Google style visual timer">
-  <meta property="og:image" content="https://timerg.com/favicon.ico">
-  <meta property="og:url" content="https://timerg.com.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta property="og:image" content="https://www.timerg.com/favicon.ico">
+  <meta property="og:url" content="https://www.timerg.com.com">
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta name="naver-site-verification" content="9ba7bac46fd539c92a546ec41ab14f9f7752aebc" />
+  <meta name="naver-site-verification" content="b85c0258aab61e2d87f4f88d348ed40a02b865c8" />
   <title>TimerG(타이머G)</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6836676689902404" crossorigin="anonymous"></script>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -28,115 +34,136 @@
 
   gtag('config', 'G-25F31FTX0M');
 </script>
-<body>
-    <header>
+    <header style="width: 100%; margin-bottom: 20px;">
         <div class="container">
             <div class="logo">
-                <a href="index.html"><h1>타이머G</h1></a>
+                <a href="pages/index.html"><h1>TimerG</h1></a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="timer/index.html">타이머</a></li>
-                    <li><a href="blog.html">콘텐츠 허브</a></li>
-                    <li><a href="about.html">사이트 소개</a></li>
+                    <li><a href="index.html" class="active">Timer</a></li>
+                    <li><a href="pages/blog.html">Contents Hub</a></li>
+                    <li><a href="pages/about.html">About</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+<body>
+    <div class="app-top-buttons">
+        <button id="toggleSettingsButton">Hide settings</button>
+        <button id="fullscreenTimerBtn">Full screen</button>
+        <button id="lanBtn" onclick="location.href='index_ko.html'">&#x1F1F0;&#x1F1F7; Korean</button>
+    </div>
 
-    <main>
-        <section id="timer-section" class="hero">
-            <div class="container">
-                <h2>집중이 필요할 때, 지금 바로 시작하세요!</h2>
-                <p class="tagline">뽀모도로, 인터벌, 스터디 등 다양한 기능은 <a href="timer/index.html" style="font-size: 20px"><b> 여기</b></a> 에서 경험해보세요.</p>
-
-                <div class="quick-timer-container" id="quick-timer">
-                    <p style="font-size: 25px"> Quick timer </p>
-                    <div class="quick-timer-display">
-                        <span id="minutes">25</span>:<span id="seconds">00</span>
-                    </div>
-                    <div class="quick-timer-controls">
-                        <input type="number" id="set-minutes" value="25" min="0" max="999"> 분
-                        <button id="start-btn">시작</button>
-                        <button id="pause-btn" style="display: none;">일시정지</button>
-                        <button id="reset-btn">초기화</button>
-                    </div>
-                    <div class="quick-timer-presets">
-                        <button class="preset-btn" data-minutes="25">뽀모도로 (25분)</button>
-                        <button class="preset-btn" data-minutes="5">짧은 휴식 (5분)</button>
-                        <button class="preset-btn" data-minutes="50">스터디 (50분)</button>
-                    </div>
-                </div>
+    <div class="top-controls" id="topControlsContainer">
+         <div class="control-group">
+            <div class="control-group-title">Settings</div>
+            <div class="control-item">
+                <label for="sizeSlider">Size:</label>
+                <input type="range" id="sizeSlider" min="50" max="100" value="100" step="10">
+                <span id="sizeValue" class="value-display">100%</span>
             </div>
-        </section>
-
-        <section id="featured-content" class="content-preview">
-            <div class="container">
-                <h2>시간 관리 & 생산성 팁</h2>
-                <div class="article-grid">
-                    <article>
-                        <img src="blog/pomodoro-guide.jpg" alt="뽀모도로 기법 이미지">
-                        <h3><a href="blog/pomodoro-guide.html">뽀모도로 기법 완벽 가이드</a></h3>
-                        <p>25분 집중, 5분 휴식으로 생산성을 극대화하는 방법...</p>
-                        <a href="blog/pomodoro-guide.html" class="read-more">더 보기</a>
-                    </article>
-                    <article>
-                        <img src="blog/5-solution.png" alt="시간 관리 이미지">
-                        <h3><a href="blog/5-solution.html">직장인을 위한 시간 관리 핵심 5가지</a></h3>
-                        <p>업무 효율을 높이고 워라밸을 찾는 실용적인 팁들...</p>
-                        <a href="blog/5-solution.html" class="read-more">더 보기</a>
-                    </article>
-                    <article>
-                        <img src="blog/study-focus-tips.png" alt="스터디 팁 이미지">
-                        <h3><a href="blog/study-focus-tips.html">시험 기간, 집중력 유지하는 스터디 비법</a></h3>
-                        <p>최고의 컨디션으로 시험을 준비하는 방법...</p>
-                        <a href="blog/study-focus-tips.html" class="read-more">더 보기</a>
-                    </article>
-                </div>
-                <div class="see-all-content">
-                    <a href="blog.html" class="btn">모든 콘텐츠 보기</a>
-                </div>
+            <div class="control-item">
+                <label for="volumeSlider" style="font-size: 22px;">🔈</label>
+                <input type="range" id="volumeSlider" min="0" max="100" value="50" step="10">
+                <span id="volumeValue" class="value-display">100%</span>
             </div>
-        </section>
-
-        <section id="why-us" class="features-overview">
-            <div class="container">
-                <h2>왜 타이머G인가?</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <img src="r1.png" alt="맞춤 타이머 아이콘" class="feature-icon">
-                        <h3>다양한 맞춤 타이머</h3>
-                        <p>뽀모도로, 인터벌, 스터디 등 필요에 맞게 설정하고 사용하세요.</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="r2.png" alt="유용한 콘텐츠 아이콘" class="feature-icon">
-                        <h3>유용한 시간 관리 팁</h3>
-                        <p>생산성을 높이는 다양한 정보와 가이드를 제공합니다.</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="r3.png" alt="심플한 사용법 아이콘" class="feature-icon">
-                        <h3>간편하고 직관적인 사용법</h3>
-                        <p>누구나 쉽게 사용할 수 있는 깔끔한 디자인을 제공합니다.</p>
-                    </div>
-                </div>
+            <div class="control-item">
+                <input type="checkbox" id="toggleTimeDisplay" checked>
+                <label for="toggleTimeDisplay">Display time</label>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-nav">
-                <a href="privacy.html">개인정보처리방침</a> |
-                <a href="terms.html">이용약관</a> |
-                <a href="sitemap.xml">사이트맵</a>
-            </div>
-            <p>&copy; 2025 타이머G. All Rights Reserved.</p>
         </div>
-        <audio id="alramAudio" style="display: none;">
-          <source src="timer/alramAudio.mp3" type="audio/mpeg">
-        </audio>
-    </footer>
 
-    <script src="script.js"></script>
+        <div class="col-mode-control-group">
+          <div class="control-group" id="mainColorPickerContainerControlGroup">
+              <div class="control-group-title">Timer Color</div>
+              <div class="control-item">
+                  <div class="custom-color-picker-container" id="mainColorPickerContainer"></div>
+              </div>
+          </div>
+          <div class="control-group">
+               <div class="control-group-title">Mode</div>
+              <div class="control-item app-mode-toggle">
+                  <input type="checkbox" id="globalSequenceModeCheckbox">
+                  <label for="globalSequenceModeCheckbox">Use sequence mode</label>
+              </div>
+          </div>
+       </div>
+    </div>
+
+    <div class="timer-container" id="mainTimerContainer">
+        <div class="clock" id="clock">
+            <svg class="progress-ring" id="progressSvg">
+                <circle class="progress-ring__background" id="backgroundCircle"/>
+                <path id="pieSlice" class="pie-slice" />
+            </svg>
+            <div class="time-display" id="timeDisplayContainer">
+                <span id="digital-time">00:00:00</span>
+            </div>
+        </div>
+        <div id="currentSequenceDisplay"></div> 
+        <div class="controls" id="mainTimerControls"> 
+            <div class="time-inputs" id="mainTimeInputs">
+                <input type="number" id="hours" placeholder="HH" min="0" max="99" value="0">
+                <span>:</span>
+                <input type="number" id="minutes" placeholder="MM" min="0" max="59" value="5">
+                <span>:</span>
+                <input type="number" id="seconds" placeholder="SS" min="0" max="59" value="0">
+            </div>
+            <div class="buttons">
+                <button id="startBtn">▶︎</button>
+                <button id="pauseBtn">❚❚</button>
+                <button id="resetBtn">⟳</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="sequenceEditor" style="display:none;"> <h2>Sequence Editor</h2>
+        <div id="sequenceItemsContainer"></div>
+        <div class="control-item" id="autoStartNextSequenceCheckbox_div">
+            <input type="checkbox" id="autoStartNextSequenceCheckbox" checked>
+            <label for="autoStartNextSequenceCheckbox" style="margin-right: 20px;">Automatically start next sequence</label>
+            <input type="checkbox" id="alramForEachTimerCheckbox">
+            <label for="alramForEachTimerCheckbox">Enable alram for each item</label>
+        </div>
+        <div class="sequence-buttons-group">
+            <button id="addSequenceItemBtn">Add sequence item</button>
+            </div>
+    </div>
+
+    
+    <audio id="alramAudio" style="display: none;">
+        <source src="alramAudio.mp3" type="audio/mpeg">
+    </audio>
+    <div id="alram" class="modal-containera" style="display: none;">
+      <div class="modal-content">
+        <span id="closeAlram">&times;</span>
+        <h2>⏰ Time is up! ⏰</h2>
+      </div>
+    </div>
+    <template id="sequenceItemTemplate">
+        <div class="sequence-item">
+            <div class="sequence-item-header">
+                <span class="sequence-item-number">Item</span>
+                <button class="removeSequenceItemBtn" title="Remove Item">X</button>
+            </div>
+            <div class="control-item">
+                <label>Name: <input type="text" class="sequence-name" placeholder="e.g.: warming up (optional)"></label>
+            </div>
+            <div class="control-item">
+                <label>Duration:</label>
+                <input type="number" class="seq-hours" placeholder="HH" min="0" max="99" value="0"><span>:</span>
+                <input type="number" class="seq-minutes" placeholder="MM" min="0" max="59" value="0"><span>:</span>
+                <input type="number" class="seq-seconds" placeholder="SS" min="0" max="59" value="5">
+            </div>
+            <div class="control-item">
+                <label class="seq-color-label">Color:</label>
+                <div class="custom-color-picker-container" data-is-sequence-item="true">
+                    </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="script_en.js"></script>
 </body>
 </html>
