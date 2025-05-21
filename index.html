@@ -154,11 +154,22 @@
             <div class="control-item">
                 <label>Name: <input type="text" class="sequence-name" placeholder="e.g.: warming up (optional)"></label>
             </div>
-            <div class="control-item">
+
+            <div class="control-item"">
                 <label>Duration:</label>
-                <input type="number" class="seq-hours" placeholder="HH" min="0" max="99" value="0"><span>:</span>
-                <input type="number" class="seq-minutes" placeholder="MM" min="0" max="59" value="0"><span>:</span>
-                <input type="number" class="seq-seconds" placeholder="SS" min="0" max="59" value="5">
+                <div style="display: flex; flex-wrap: wrap; flex-direction: row;">
+		  <div style="min-width: 150px;">
+                    <input type="number" class="seq-hours" placeholder="HH" min="0" max="99" value="0"><span>:</span>
+                    <input type="number" class="seq-minutes" placeholder="MM" min="0" max="59" value="5"><span>:</span>
+                    <input type="number" class="seq-seconds" placeholder="SS" min="0" max="59" value="0">
+                    <button type="button" class="seq-reset-time-btn">⟳</button>
+                  </div>
+                  <div style="min-width: 240px;">
+                    <button type="button" class="add-time-btn" style="margin-left:0;" data-add-minutes="5">+5min</button>
+                    <button type="button" class="add-time-btn" data-add-minutes="10">+10min</button>
+                    <button type="button" class="add-time-btn" data-add-minutes="30">+30min</button>
+		  </div>
+                </div>
             </div>
             <div class="control-item">
                 <label class="seq-color-label">Color:</label>

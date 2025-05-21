@@ -4,6 +4,7 @@
     #lanBtn { margin-bottom: 15px; padding: 8px 15px; cursor: pointer; background-color: #6c757d; color: white; border: none; border-radius: 5px; font-size: 0.9em; }
     #toggleSettingsButton:hover { background-color: #5a6268; }
     #fullscreenTimerBtn { margin-bottom: 15px; padding: 8px 15px; cursor: pointer; background-color: #6c757d; color: white; border: none; border-radius: 5px; font-size: 0.9em; }
+    #hours, #minutes, #seconds {min-width: 60px;}
     .top-controls { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 10px 10px; margin-bottom: 20px; padding: 10px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); max-width: calc(100% - 20px); }
     .control-group { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; padding: 6px; border: 1px solid #e0e0e0; border-radius: 6px; }
     .col-mode-control-group {
@@ -130,4 +131,40 @@ text-align: center;
 
 @media (max-width: 768px) {
     nav {display: none;}
+
+}
+
+@media (max-width: 451px) { 
+  .add-time-btn {
+    margin-top: 2px;
+  }
+}
+
+/* 시간 추가 버튼 스타일 */
+.add-time-btn {
+  background-color: #4CAF50; /* 초록색 */
+  color: white;
+  width: 70px;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-left: 5px; /* 시간 입력 필드와 버튼 사이 간격 */
+}
+
+.seq-reset-time-btn:disabled,
+.add-time-btn:disabled {
+  background-color: #cccccc !important;
+}
+
+.seq-reset-time-btn {
+  color: white;
+  background-color: #dc3545;
+  width: 30px;
+  font-size: 22px;
+  border: none;
+  border-radius: 4px;
+  margin-left: 6px;
 }

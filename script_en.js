@@ -321,6 +321,17 @@ document.addEventListener('DOMContentLoaded', () => {
       updateMainControlsState();
   }
 
+  function addMin(hourEl, minEl, secEl, additionalMin) {
+    let prevMin = parseInt(minEl.value);
+    minEl.value = prevMin + additionalMin;
+    let hour_val = parseInt(hourEl.value);
+    while (minEl.value >= 60) {
+        minEl.value -= 60;
+        hour_val+=1;
+    }
+    hourEl.value = hour_val;
+  }
+
   // --- 시퀀스 관련 함수 ---
   function addSequenceItem(initialData = null) {
       const itemFragment = sequenceItemTemplate.content.cloneNode(true);
@@ -341,11 +352,24 @@ document.addEventListener('DOMContentLoaded', () => {
           nameInput.value = initialData.name || '';
           hoursInput.value = initialData.h || 0;
           minutesInput.value = initialData.m || 0;
-          secondsInput.value = initialData.s || 5;
+          secondsInput.value = initialData.s || 0;
           // itemColor is already set
       }
 
-
+      let addTimeBtns = sequenceItemDiv.querySelectorAll('.add-time-btn');
+      addTimeBtns.forEach(btn => {
+        const minutesToAdd = parseInt(btn.textContent.match(/\d+/)[0]);
+	btn.addEventListener('click', () => {
+          addMin(hoursInput, minutesInput, secondsInput, minutesToAdd);
+          updateMainControlsState(); // 초기 버튼 상태 및 UI 설정
+        });
+      });
+      sequenceItemDiv.querySelector('.seq-reset-time-btn').addEventListener('click', () => {
+        hoursInput.value = 0;
+        minutesInput.value = 0;
+        secondsInput.value = 0;
+        updateMainControlsState();
+      })
       sequenceItemsContainer.appendChild(sequenceItemDiv);
       updateSequenceItemNumbers();
       sequenceItemDiv.querySelector('.removeSequenceItemBtn').addEventListener('click', () => {
@@ -372,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const colorInputElement = itemDiv.querySelector('.custom-color-input'); // 팔레트 함수가 생성한 input
           const timerColor = colorInputElement ? colorInputElement.value : PRESET_COLORS[0];
 
-          if (duration > 0) {
+          if (duration > 0 || duration == 0) {
               sequenceData.push({
                   name: name || `Item ${sequenceData.length + 1}`,
                   duration,
@@ -492,6 +516,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mainTimeInputs.style.display = 'none'; // 시퀀스 모드 시 메인 시간 입력 숨김
         sequenceEditorDiv.style.display = 'block';
         addSequenceItemBtn.disabled = isSequenceActive; // 시퀀스 실행 중엔 아이템 추가 불가
+	document.querySelectorAll('.add-time-btn').forEach(btn => {btn.disabled = isSequenceActive;});
+	document.querySelectorAll('.seq-reset-time-btn').forEach(btn => {btn.disabled = isSequenceActive;});
         // autoStartNextSequenceCheckbox.disabled = isSequenceActive;
         sequenceItemsContainer.querySelectorAll(
             'input, button.removeSequenceItemBtn').forEach(el => el.disabled = isSequenceActive);
