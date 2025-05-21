@@ -134,12 +134,6 @@ text-align: center;
 
 }
 
-@media (max-width: 451px) { 
-  .add-time-btn {
-    margin-top: 2px;
-  }
-}
-
 /* 시간 추가 버튼 스타일 */
 .add-time-btn {
   background-color: #4CAF50; /* 초록색 */

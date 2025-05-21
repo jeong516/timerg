@@ -409,6 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function startSequenceExecution() {
       collectSequenceDataFromUI();
       if (sequenceData.length === 0) { alert("No sequence item to execute."); return; }
+      if (sequenceData.some(data => data.duration > 0) !== true) { alert("No valid sequence item. (All is zero duration)"); return;}
       isSequenceActive = true;
       isTimerGloballyPaused = false; // 시퀀스 시작 시 강제로 unpause
       currentSequenceIndex = -1;
