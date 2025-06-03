@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대상자 이동에 사용되는 각종 보조장비에 관한 내용으로 옳지 않은 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">대상자 이동에 사용되는 각종 보조장비에 관한 내용으로 옳지 않은 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="3"><li>샤워용 의자는 샤워 시 대상자를 여러 번 들어올려 이동하는 동작을 줄이고, 휠체어나 화장실 변기에서 편리하게 샤워용의자로 이동 가능</li><li>화장실변기 높이조절기는 휠체어와 화장실 변기 높이를 같게 맞추어 대상자가 앉은 상태에서 옆으로 이동할 수 있어 들었다 내렸다 동작 피할 수 있음.</li><li>슬라이딩보드는 마찰력을 줄여 적은 힘으로도 이용자를 침대에서 옆으로 이동할 수 있음</li><li>리프트는 몸을 가눌 수 없거나 부분적으로 가눌 수 있는 이용자를 들어 올릴 때 사용</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

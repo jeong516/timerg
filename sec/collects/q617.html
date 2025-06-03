@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다음 중 건강증진활동의 사업장 현황 및 근로자 요구조사 사항으로 틀린 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">다음 중 건강증진활동의 사업장 현황 및 근로자 요구조사 사항으로 틀린 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="1"><li>건강증진에 대한 관리자의 참석도를 조사한다.</li><li>건강증진 요구도 파악 시 건강진단 결과, 결근 및 이직 자료, 산업재해 자료 수집한다.</li><li>사업장의 물리적 환경, 사회심리적 요인, 사업장의 외부요인을 분석한다.</li><li>근골격계 유해요인조사 결과, 뇌심혈관계질환 발병위험도 평가 결과, 건강관리실 이용현황 등에 대한 자료를 수집하고, 부서별건강증진 실무 담당자 및 근로자의 의견을 청취하는 등 종합적인 정보를 통합하여 정리한다.</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

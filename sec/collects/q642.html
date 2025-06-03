@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기업의 보건관리 내용으로 옳지 않은 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">기업의 보건관리 내용으로 옳지 않은 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="2"><li>보건관리자의 임명에서부터 사업장의 보건관리에 대한 책임의 명백화, 의료시설, 건강보험과 재해보험을 통한 질병의 치료와 의료비지급 등을 한다.</li><li>구성원의 각종 질병과 정신적 스트레스 등 발병된 사고에 대해 조치함으로써 인적자원의 유지보존 및 성과를 높이는 것을 말한다.</li><li>보건관리의 제반사항에 보건관리 대상자인 근로자를 참여시켜 의견을 반영하도록 하여 효율적인 보건관리를 실행한다.</li><li>조직구성원의 능력향상과 심리적 안정을 위한 관리가 잘 통합되어야 효과적으로 실현한다.</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

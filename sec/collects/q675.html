@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안전보건표지의 설명과 설치 방법이 바르게 연결되지 않은 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">안전보건표지의 설명과 설치 방법이 바르게 연결되지 않은 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="3"><li>금지표지 : 어떤 특정한 행위가 허용되지 않음을 나타낸다. 이 표지는 흰색바탕에 빨간색 원과 45°각도의 빗선으로 이루어진다.</li><li>경고표지 : 일정한 위험에 따른 경고를 나타낸다. 이 표지는 노란색 바탕에 검은색 삼각테로 이루어진다.</li><li>지시표지 : 일정한 행동을 취할 것을 지시하는 것으로 파란색의 원형이며, 지시하는 내용을 적색으로 표현한다.</li><li>안내표지 : 안전에 관한 정보를 제공한다. 이 표지는 녹색바탕의 정방형 또는 장방형이며 표현하고자 하는 내용은 흰색이고, 녹색은 전체 면적의 50% 이상이 되어야 한다.</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
