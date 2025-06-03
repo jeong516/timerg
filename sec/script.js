@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 adDiv.style = 'text-align: center; margin: 15px 0; height: 150px;';
                 var adSlot = adSlots[i % adSlots.length];
                 adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
-                postElement.appendChild(adDiv);
+                postContainer.appendChild(adDiv);
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }
         }
