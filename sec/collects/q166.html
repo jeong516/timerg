@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다음은 직업성 심혈관계질환의 원인에 대한 설명이다. 거리가 먼 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">다음은 직업성 심혈관계질환의 원인에 대한 설명이다. 거리가 먼 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="3"><li>집단적 작업환경 요인으로 개별 노동자의 작업과정에 주목하기보다는 개별 노동자가 처해 있는 집단적 작업환경에 초점을 맞추는 것을 말한다.</li><li>집단적 작업환경 요인으로 사회 전체적으로 이 질병이 증가하는지, 어떤 집단에서, 어떤 노동환경의 변화가 이를 촉발하는지 등 질병발생의 근본적인 원인에 대한 접근을 시도하는 관점이다.</li><li>집단적 작업환경 요인으로 개인의 유전적 감수성과 좋지 않은 건강행위에 의해 이 질환이 발생한다는 관점으로 흡연, 음주, 기존의 질병(고혈압, 당뇨, 고지혈증 등), 운동부족, 비만 등을 주요 원인으로 꼽는다.</li><li>집단적 작업환경 요인으로 심혈관계 질환이 근골격계 직업병과 같이 기본적 원천은 노동과정의 구조적 변화와 노동강도의 증가에 있다고 보는 견해이다.</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

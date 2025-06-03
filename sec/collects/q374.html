@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동일한 사고로 6개월 이상 치료가 필요한 부상자가 2명 이상 발생하거나, 동일한 유해요인으로 급성중독 등 대통령령으로 정하는 직업성 질병자가 1년 이내 3명 이상 발생한 경우 받는 처벌로 옳은 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">동일한 사고로 6개월 이상 치료가 필요한 부상자가 2명 이상 발생하거나, 동일한 유해요인으로 급성중독 등 대통령령으로 정하는 직업성 질병자가 1년 이내 3명 이상 발생한 경우 받는 처벌로 옳은 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="2"><li>5년 이하 징역 또는 1억원 이상 벌금</li><li>7년 이하 징역 또는 1억원 이상 벌금</li><li>9년 이하 징역 또는 2억원 이상 벌금</li><li>7년 이하 징역 또는 2억원 이상 벌금</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

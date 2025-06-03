@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다음이 설명하는 입식근로자에게 많이 생기는 질병으로 적절한 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">다음이 설명하는 입식근로자에게 많이 생기는 질병으로 적절한 것은?</h1><div class="quiz-description"><p>장시간 서 있는 자세를 취하면 근육에 긴장이 생기고 긴장된 근육에 의해 판막이 손상될 수 있습니다. 판막이 망가지면 하지로부터 심장으로 가는 정맥혈이 제대로 돌아오지 못하므로 표피 주변의 혈관으로 우회하게 됩니다. 정맥이 표피로 우회하면서 혈관이 확장되고 꾸불꾸불해지기도 합니다.</p></div><ol id="optionsList" class="quiz-options" data-answer="1"><li>하지 정맥류</li><li>요통</li><li>근골격계질환</li><li>통증</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
