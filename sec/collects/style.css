@@ -23,7 +23,7 @@ header {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: center;
-    width: max(100%, 650px);
+    width: min(100%, 650px);
 }
 
 header h1 {
