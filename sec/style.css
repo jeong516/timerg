@@ -1,0 +1,110 @@
+/* style.css */
+
+/* 기본 스타일 초기화 및 폰트 설정 */
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+header {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+header h1 {
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+/* 검색창 스타일 */
+.search-box {
+    margin-top: 15px;
+}
+
+#searchInput {
+    width: 95%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+
+/* 게시물 컨테이너 */
+#posts-container {
+    display: grid;
+    gap: 20px;
+}
+
+/* 개별 게시물 스타일 */
+.post {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+}
+
+.post h2 {
+    margin-top: 0;
+    color: #0056b3;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.post-content {
+    color: #555;
+}
+
+/* 검색 결과 없음 메시지 */
+#no-results {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* 검색어 하이라이트 스타일 */
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
