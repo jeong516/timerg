@@ -148,3 +148,37 @@ header h1 {
 .reveal-button:hover {
     background-color: #0056b3;
 }
+/* 1. 전체 레이아웃 설정 */
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; /* 본문과 사이드바 사이의 간격 */
+    padding: 0 20px;
+}
+
+/* 2. 본문 영역 설정 */
+.content-area {
+    flex: 1; /* 남는 공간을 모두 차지 */
+    max-width: 800px; /* 본문이 너무 넓어지지 않도록 최대 너비 설정 */
+}
+
+/* 3. 사이드바 설정 */
+aside#aside {
+    width: 300px; /* 사이드바 너비 고정 */
+    flex-shrink: 0; /* 화면이 줄어도 사이드바 너비는 줄어들지 않음 */
+}
+
+/* 4. 화면이 좁아질 때의 처리 (모바일 대응) */
+@media (max-width: 1024px) {
+    .main-wrapper {
+        flex-direction: column; /* 아이템을 세로로 쌓음 */
+        align-items: center;
+    }
+
+    aside#aside {
+        width: 100%; /* 너비를 100%로 변경 */
+        max-width: 800px; /* 본문 너비와 맞춤 */
+        margin-top: 20px;
+    }
+}
