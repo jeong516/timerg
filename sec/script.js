@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        var adSlots = ['8076406309', '5716167978', '4346487815'];
+        var adSlots = ['4346487815', '5716167978', '4346487815'];
         for (var i = 0; i < postsToDisplay.length; i++) {
             post = postsToDisplay[i]
 
