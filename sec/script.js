@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>${highlightedSnippet}</p>
                 </div>
             `;
+            postsContainer.appendChild(postElement);
             if (i == 2 || i == 3 || i == 5) {
                 var adDiv = document.createElement('div');
                 adDiv.style = 'text-align: center; margin: 15px 0; height: 150px;';
@@ -69,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 postElement.appendChild(adDiv);
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }
-            postsContainer.appendChild(postElement);
         }
     }
 
