@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다음 행사 중 사고로 업무상 사고로 인정받는 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">다음 행사 중 사고로 업무상 사고로 인정받는 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="4"><li>사전에 보고된 바 없고, 경비도 각자 부담한 부서단위 행사에서 발생한 사고</li><li>관리소장이 주관한 회식에 참석해 2차 회식장소에서 나오다가 계단에서 넘어져 사망한 사고</li><li>사업장 지원을 받고 있는 공식행사가 아닌 노동조합 대의원끼리 친선축구경기를 하다가 부상당한 경우</li><li>사업주의 승인을 받고 팀 단위로 실시한 체육대회, 야유회 중 발생한 사고</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

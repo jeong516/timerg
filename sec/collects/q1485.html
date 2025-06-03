@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다음은 위험물안전관리법에 의한 위험물의 저장 및 취급방법에 대한 설명이다. 틀린 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">다음은 위험물안전관리법에 의한 위험물의 저장 및 취급방법에 대한 설명이다. 틀린 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="4"><li>제1류 위험물(산화성 고체) - 조해성이 있으므로 습기에 주의하며, 용기는 밀폐하여 저장, 산화되기 쉬운 물질과 열원, 산 또는 화재 위험의 장소로부터 격리</li><li>제3류 위험물(자연발화성 및 금수성 물질) - 공기 또는 수분의 접촉을 방지하고 용기의 파손 및 부식 방지, 다량 저장 시 희석제 혼합 및 수분 침입방지</li><li>제5류 위험물(자기반응성 물질) - 점화원 또는 분해를 촉진시키는 물질로부터 격리, 포장외부에 충격주의, 화기엄금 등 표시</li><li>제4류 위험물 (인화성 액체) - 내산성 용기를 사용하고, 밀전하여 누설 방지, 가연물, 물, 유기물 및 고체 산화제와의 접촉 금지</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

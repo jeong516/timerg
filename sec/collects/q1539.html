@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다음 중 건설현장 내 낙하물로 인한 재해를 예방할 수 있는 조치사항으로 거리가 먼 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">다음 중 건설현장 내 낙하물로 인한 재해를 예방할 수 있는 조치사항으로 거리가 먼 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="3"><li>사업주는 작업장의 바닥, 도로 및 통로 등에서 낙하물이 근로자에게 위험을 미칠 우려가 있는 경우 보호설비를 설치해야 한다.</li><li>낙하물 방지망 및 수직보호망은 "산업표준화법"에 따른 한국산업표준에서 정하는 성능기준에 적합한 것을 사용해야 한다.</li><li>높이가 3m이상인 장소에서는 절대로 물체를 투하해서는 안된다.</li><li>작업으로 인하여 불체가 떨어지거나 날아올 위험이 있는 경우 낙하물 방지망, 수직보호망 또는 방호선반의 설치 등의 조치를 해야한다.</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

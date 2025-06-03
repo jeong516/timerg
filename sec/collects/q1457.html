@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다음 중 사무공간의 작업환경 관리 기준으로 알맞지 않은 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">다음 중 사무공간의 작업환경 관리 기준으로 알맞지 않은 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="3"><li>사무용 책상과 의자는 근로자에 따라 그 높낮이를 조절할 수 있는 구조여야 한다.</li><li>휴게시설은 인체에 해로운 분진 등을 발산하는 장소나 유해물질을 취급하는 장소와 격리된 것에 설치한다.</li><li>컴퓨터를 사용하는 경우, 사무공간은 채광을 위해 직사광선이 비치는 구조로 설치한다.</li><li>사무실 내에선 내부공간 오염을 방지할 수 있도록 공기정화설비 등을 적절히 가동한다.</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

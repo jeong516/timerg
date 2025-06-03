@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사업장 건강증진에 대한 설명으로 옳지 않은 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">사업장 건강증진에 대한 설명으로 옳지 않은 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="4"><li>건강지향적인 사업장 환경을 조성하고 건강증진 조직활동을 강화시키는것을 의미한다</li><li>모든 근로자 개인의 건강유지 및 증진을 목표로 한다</li><li>사회경제적 변화와 생활 습관 변화로 직업관련 질병률이 높아짐에 따라 추진되기 시작했다</li><li>전체 의료비용이 증가하는 단점이 있다</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
