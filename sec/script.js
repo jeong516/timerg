@@ -36,12 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
             postsContainer.classList.remove('hidden');
         }
 
+
+        var adSlots = ['8076406309', '5716167978', '4346487815'];
         for (var i = 0; i < postsToDisplay.length; i++) {
             post = postsToDisplay[i]
 
             const postElement = document.createElement('article');
             postElement.classList.add('post');
-
             const highlightedTitle = highlightText(post.title, searchTerm);
             const snippet = post.content.substring(0, 150) + (post.content.length > 150 ? '...' : '');
             const id = post.id;
@@ -60,6 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>${highlightedSnippet}</p>
                 </div>
             `;
+            if (i == 2 || i == 3 || i == 5) {
+                var adDiv = document.createElement('div');
+                adDiv.style = 'text-align: center; margin: 15px 0; height: 150px;';
+                var adSlot = adSlots[i % adSlots.length];
+                adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+                postElement.appendChild(adDiv);
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            }
             postsContainer.appendChild(postElement);
         }
     }
