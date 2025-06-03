@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[보기]의 내용은 손잡이가 있는 대상물을 작업장 바닥에서 들어 올릴 때의 작업순서입니다. 다음 중 작업순서가 바르게 나열한 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">[보기]의 내용은 손잡이가 있는 대상물을 작업장 바닥에서 들어 올릴 때의 작업순서입니다. 다음 중 작업순서가 바르게 나열한 것은?</h1><div class="quiz-description"><p>1) 발을 뻗은 상태로 손잡이를 손바닥 전체로 잡고 허리를 곧게 편다.
+2) 몸의 중심과 운반 대상물의 중심이 가능한 한 일치하도록 양쪽발을 2~3발 벌린다.
+3) 하중이 분산되도록 대상물을 허벅지에 기대듯이 옆으로 들어 올린다.
+4) 턱을 안쪽으로 당기며 다리의 힘만으로 든다.</p></div><ol id="optionsList" class="quiz-options" data-answer="3"><li>1-2-3-4</li><li>2-4-1-3</li><li>2-1-4-3</li><li>2-1-3-4</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

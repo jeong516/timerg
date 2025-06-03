@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안구건조증에 대한 설명으로 잘못된 것은?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
+    <div id="quizContainer" class="quiz-container">
+        <h1 class="quiz-header">안구건조증에 대한 설명으로 잘못된 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="4"><li>눈이 건조해지면 눈의 이물감, 피로감, 시린감 및 흐릿한 시야 그리고 눈이 자주 충혈되고 분미물이 많이 생기며, 눈 주변에 뻐근한 통증이 느껴지는 등의 증상이 나타날 수 있다.</li><li>증상 발생 시 즉시 치료하지 않는 경우 각막이 손상되고 염증이 생기는 등 만성화되어 치료가 어려울 수 있다.</li><li>치료가 잘 되지 않는 경우 각막이 손상되어 시력이 저하될 수 있으며, 충혈의 경우 수년간 방치하면 미세혈관이 사방으로 뻗어나가고 혈관 직경이 굵어져 깨끗한 눈을 되찾기 어려워질 수 있다.</li><li>눈물이 쏟아지듯이 많이 흐르는 눈물의 반사적 분비 현상이 나타나는 경우는 없다.</li>
+        </ol>
+        
+        <button id="revealBtn" class="reveal-button">정답 확인</button>
+        
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const optionsList = document.getElementById('optionsList');
+        const quizContainer = document.getElementById('quizContainer');
+
+        revealBtn.addEventListener('click', () => {
+            // data-answer 속성에서 정답 번호를 읽어옴
+            const answerNumber = optionsList.dataset.answer;
+            
+            // 모든 선택지(li)를 가져옴
+            const allOptions = optionsList.querySelectorAll('li');
+
+            // 각 선택지를 순회하며 정답/오답 클래스를 추가
+            allOptions.forEach((option, index) => {
+                // index는 0부터 시작하므로 +1 해줌
+                if ((index + 1) == answerNumber) {
+                    option.classList.add('correct'); // 정답
+                } else {
+                    option.classList.add('incorrect'); // 오답
+                }
+            });
+
+            // 정답 확인 후에는 마우스 호버 효과 등을 없애기 위해 컨테이너에 클래스 추가
+            quizContainer.classList.add('answered');
+            // 버튼 숨기기
+            revealBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
