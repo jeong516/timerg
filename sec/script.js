@@ -36,7 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
             postsContainer.classList.remove('hidden');
         }
 
-        postsToDisplay.forEach(post => {
+        for (var i = 0; i < postsToDisplay.length; i++) {
+            post = postsToDisplay[i]
+
             const postElement = document.createElement('article');
             postElement.classList.add('post');
 
@@ -59,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             postsContainer.appendChild(postElement);
-        });
+        }
     }
 
     // 검색 로직 함수
