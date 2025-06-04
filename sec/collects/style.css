@@ -22,7 +22,7 @@ header {
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: center;
+    text-align: center; 
     width: min(calc(100%-20px), 650px);
 }
 
@@ -180,4 +180,8 @@ aside#aside {
         max-width: 800px; /* 본문 너비와 맞춤 */
         margin-top: 20px;
     }
+}
+.more_questions {
+    float:right;
+    padding: 16px 4px;
 }
