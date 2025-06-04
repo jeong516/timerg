@@ -89,18 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. 각 게시물의 점수를 계산
         const scoredPosts = posts.map(post => {
             let score = 0;
-            const lowerCaseTitle = post.title.toLowerCase();
-            const lowerCaseContent = post.content.toLowerCase();
+            const lowerCaseContents = post.title.toLowerCase() + " " + post.content.toLowerCase();
 
             searchWords.forEach(word => {
-                // 제목에 포함되면 2점 (가중치 부여)
-                if (lowerCaseTitle.includes(word)) {
-                    score += 2;
-                } 
-                // 내용에만 포함되면 1점
-                else if (lowerCaseContent.includes(word)) {
+                if (lowerCaseContents.includes(word)) {
                     score += 1;
-                }
+                } 
             });
             // 원래 post 데이터와 계산된 점수를 함께 반환
             return { ...post, score };
