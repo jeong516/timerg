@@ -3,20 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="[산업안전 보건교육] 코로나19에 대한 설명으로 옳은 것은?  1) 돼지독감 바이러스의 유전자가 재조합된 바이러스이다 2) 주요 전파경로는 공기매개이다 3) RNA 바이러스로 돌연변이가 어렵다 4) 잠복기는 1~14일로 평균 5~7일 정도이다.">
     <title>코로나19에 대한 설명으로 옳은 것은?</title>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6836676689902404" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6836676689902404" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header style="cursor: pointer" onclick="location.href='../index.html';"><h1>산업안전 보건교육</h1></header>
-    <div id="quizContainer" class="quiz-container">
-        <h1 class="quiz-header">코로나19에 대한 설명으로 옳은 것은?</h1><ol id="optionsList" class="quiz-options" data-answer="4"><li>돼지독감 바이러스의 유전자가 재조합된 바이러스이다</li><li>주요 전파경로는 공기매개이다</li><li>RNA 바이러스로 돌연변이가 어렵다</li><li>잠복기는 1~14일로 평균 5~7일 정도이다.</li>
-        </ol>
-        
-        <button id="revealBtn" class="reveal-button">정답 확인</button>
-        
-    </div>
+    <div class="main-wrapper">
+        <main class="content-area">
+            <header style="cursor: pointer" onclick="location.href='../index.html';"><h1> ◀️  산업안전 보건교육</h1></header>
+            <div id="quizContainer" class="quiz-container">
+            <h1 class="quiz-header">코로나19에 대한 설명으로 옳은 것은?</h1>
+                <ol id="optionsList" class="quiz-options" data-answer="4">
+                    <li>돼지독감 바이러스의 유전자가 재조합된 바이러스이다</li>
+                    <li>주요 전파경로는 공기매개이다</li>
+                    <li>RNA 바이러스로 돌연변이가 어렵다</li>
+                    <li>잠복기는 1~14일로 평균 5~7일 정도이다.</li>
+                </ol>
 
+                <button id="revealBtn" class="reveal-button">정답 확인</button>
+
+            </div>
+        </main>
+        <!-- 사이드바 광고 삽입 -->
+        <aside id="aside" class="sidebar">
+            <!-- 사이드바 상단에 광고 삽입 -->
+            <div id="sidebar-ad" style="text-align: center; margin-bottom: 15px;">
+                <ins class="adsbygoogle"
+                     style="display:block; height:600px;"
+                     data-ad-client="ca-pub-6836676689902404"
+                     data-ad-slot="7029249642"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </aside>
+    </div>
     <script>
         const revealBtn = document.getElementById('revealBtn');
         const optionsList = document.getElementById('optionsList');
@@ -25,7 +49,7 @@
         revealBtn.addEventListener('click', () => {
             // data-answer 속성에서 정답 번호를 읽어옴
             const answerNumber = optionsList.dataset.answer;
-            
+
             // 모든 선택지(li)를 가져옴
             const allOptions = optionsList.querySelectorAll('li');
 
