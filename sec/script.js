@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
             postsContainer.classList.remove('hidden');
         }
 
-
+        let froLen = 8;
         var adSlots = ['4346487815', '5716167978', '4346487815'];
-        for (var i = 0; i < postsToDisplay.length; i++) {
+        for (var i = 0; i < froLen && i < postsToDisplay.length; i++) {
             post = postsToDisplay[i]
 
             const postElement = document.createElement('article');
@@ -71,6 +71,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }
         }
+        setTimeout(() => {
+            for (var i = froLen; i < postsToDisplay.length; i++) {
+                post = postsToDisplay[i]
+                const postElement = document.createElement('article');
+                postElement.classList.add('post');
+                const highlightedTitle = highlightText(post.title, searchTerm);
+                const snippet = post.content.substring(0, 150) + (post.content.length > 150 ? '...' : '');
+                const id = post.id;
+                const highlightedSnippet = highlightText(snippet, searchTerm);
+                postElement.style = "cursor: pointer;"
+                postElement.onclick = function() {
+                    location.href= `collects/q${id}.html`;
+                }
+                postElement.innerHTML = `
+                    <h2>${highlightedTitle}</h2>
+                    <div class="post-meta">
+                        <span>작성일: ${post.date}</span>
+                    </div>
+                    <div class="post-content">
+                        <p>${highlightedSnippet}</p>
+                    </div>
+                `;
+                postsContainer.appendChild(postElement);
+            }
+        }, 1);
+
     }
 
     // 검색 로직 함수
