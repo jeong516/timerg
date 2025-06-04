@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             postsContainer.appendChild(postElement);
-            if (i == 1 || i == 3 || i == 4 || i == 6) {
+            if (i == 0 || i == 2 || i == 3 || i == 5) {
                 var adDiv = document.createElement('div');
                 adDiv.style = 'text-align: center; margin: 15px 0; height: auto; width: 100%; overflow: hidden;';
                 var adSlot = adSlots[i % adSlots.length];
