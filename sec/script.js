@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const postCountElement = document.getElementById('post-count');
     const noResultsElement = document.getElementById('no-results');
+    const adsContainerElement = document.getElementById('ads-tmp-container');
+    var adsList = [];
+    var isInitialized = false;
 
     // 총 게시물 수 표시
     postCountElement.textContent = posts.length;
@@ -26,6 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 게시물 목록을 화면에 표시하는 함수
     function displayPosts(postsToDisplay, searchTerm = '') {
+        if (isInitialized) {
+            for (let i = 0; i < adsList.length; i++) {
+                adsContainerElement.appendChild(adsList[i]);
+            }
+        }
         postsContainer.innerHTML = '';
 
         if (postsToDisplay.length === 0) {
@@ -37,9 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let froLen = 8;
+        let adCnt = 0;
         var adSlots = ['4346487815', '5716167978', '4346487815'];
         for (var i = 0; i < froLen && i < postsToDisplay.length; i++) {
-            post = postsToDisplay[i]
+            post = postsToDisplay[i];
 
             const postElement = document.createElement('article');
             postElement.classList.add('post');
@@ -63,14 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             postsContainer.appendChild(postElement);
             if (i == 0 || i == 2 || i == 3 || i == 5) {
-                var adDiv = document.createElement('div');
-                adDiv.style = 'text-align: center; margin: 15px 0; height: auto; width: 100%; overflow: hidden;';
-                var adSlot = adSlots[i % adSlots.length];
-                adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="false"></ins>';
-                postsContainer.appendChild(adDiv);
-                (adsbygoogle = window.adsbygoogle || []).push({});
+                if (isInitialized) {
+                    if (adCnt < adsList.length) {
+                        postsContainer.appendChild(adsList[adCnt]);
+                        adCnt++;
+                    }
+                } else {
+                    var adDiv = document.createElement('div');
+                    adDiv.style = 'text-align: center; margin: 15px 0; height: auto; width: 100%; overflow: hidden;';
+                    var adSlot = adSlots[i % adSlots.length];
+                    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="false"></ins>';
+                    postsContainer.appendChild(adDiv);
+                    adsList.push(adDiv);
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }
             }
         }
+        isInitialized = true;
         setTimeout(() => {
             for (var i = froLen; i < postsToDisplay.length; i++) {
                 post = postsToDisplay[i]
@@ -96,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 postsContainer.appendChild(postElement);
             }
         }, 1);
-
     }
 
     // 검색 로직 함수
