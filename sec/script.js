@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     var adDiv = document.createElement('div');
                     adDiv.style = 'text-align: center; margin: 15px 0; height: auto; width: 100%; overflow: hidden;';
                     var adSlot = adSlots[i % adSlots.length];
-                    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="false"></ins>';
+                    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
                     postsContainer.appendChild(adDiv);
                     adsList.push(adDiv);
                     (adsbygoogle = window.adsbygoogle || []).push({});
