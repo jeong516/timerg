@@ -108,3 +108,7 @@ footer {
     background-color: yellow;
     font-weight: bold;
 }
+
+[data-ad-status="unfilled"] {
+  display: none;
+}
