@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let froLen = 8;
         let adCnt = 0;
-        var adSlots = ['9913237084', '3806993730', '2493912060', '1180830393'];
+        // var adSlots = ['9913237084', '3806993730', '2493912060', '1180830393'];
+        var adSlots = ['7733796305', '7733796305', '7733796305', '7733796305'];
         for (var i = 0; i < froLen && i < postsToDisplay.length; i++) {
             post = postsToDisplay[i];
 
@@ -82,7 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     adDiv.style = 'text-align: center; margin: 15px 0; height: auto; width: 100%; overflow: hidden;';
                     var adSlot = adSlots[adCnt % adSlots.length];
                     adCnt++;
-                    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+                    // adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+                    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '"></ins>';
                     postsContainer.appendChild(adDiv);
                     adsList.push(adDiv);
                     (adsbygoogle = window.adsbygoogle || []).push({});
