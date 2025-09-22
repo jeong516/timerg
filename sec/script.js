@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let froLen = 8;
         let adCnt = 0;
-        var adSlots = ['9913237084', '3806993730', '2493912060', '1180830393'];
+        var adSlots = ['4346487815', '4346487815', '4346487815', '4346487815'];
+        // var adSlots = ['9913237084', '3806993730', '2493912060', '1180830393'];
         // var adSlots = ['7733796305', '7733796305', '7733796305', '7733796305'];
         // var adSlots = ['5434543472', '5434543472', '5434543472', '5434543472'];
         // var adSlots = ['5716167978', '5716167978', '5716167978', '5716167978'];
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     adDiv.style = 'text-align: center; margin: 15px 0; height: auto; width: 100%; overflow: hidden;';
                     var adSlot = adSlots[adCnt % adSlots.length];
                     adCnt++;
-                    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+                    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '" data-ad-format="auto" data-full-width-responsive="false"></ins>';
                     // adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '"></ins>';
                     // adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-format="autorelaxed" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '"></ins>';
                     // adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block; width: 100%;" data-ad-format="in-article" data-ad-format="fluid" data-ad-client="ca-pub-6836676689902404" data-ad-slot="' + adSlot + '"></ins>';
